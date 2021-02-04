@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "duel-7204f": {
+      "hosting": {
+        "duel": [
+          "duel-7204f"
+        ]
+      }
+    }
+  }
+}

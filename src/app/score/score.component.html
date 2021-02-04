@@ -1,0 +1,28 @@
+<mat-card class="item" style="text-align: center;">
+    <mat-card-title>{{ score.title }}</mat-card-title>
+    <mat-card-content>
+        <circle-progress [percent]=score.currentValue [radius]="150" [outerStrokeWidth]="24" [innerStrokeWidth]="16"
+            [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="2000"
+            [showUnits]="false" [subtitle]=subTitle() [subtitleFontSize]="'16'">
+        </circle-progress>
+
+        <div class="container" justify="center">
+            <button (click)=updateScore(-2) mat-mini-fab color="accent" aria-label="minus two"
+                style="margin-right:5px;">
+                -2
+            </button>
+            <button (click)=updateScore(-2) mat-mini-fab color="accent" aria-label="minus one"
+                style="margin-right:5px;">
+                -1
+            </button>
+            <button (click)=updateScore(1) mat-mini-fab color="primary" aria-label="plus one" style="margin-right:5px;">
+                +1
+            </button>
+            <button (click)=updateScore(2) mat-mini-fab color="primary" aria-label="plus two">
+                +2
+            </button>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-divider></mat-divider>
