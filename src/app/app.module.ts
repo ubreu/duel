@@ -6,24 +6,30 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { environment } from 'src/environments/environment';
 import { ScoreComponent } from './score/score.component';
+import { OverviewComponent } from './overview/overview.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScoreComponent
+    ScoreComponent,
+    OverviewComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule,
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,

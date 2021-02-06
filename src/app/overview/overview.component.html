@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+    <mat-icon>local_fire_department</mat-icon>
+    <span>Duel</span>
+</mat-toolbar>
+
+<div class="content-wrapper">
+    <div class="container-wrapper">
+        <div class="container">
+            <app-score *ngFor="let score of scores | async" [score]="score"></app-score>
+        </div>
+    </div>
+</div>
