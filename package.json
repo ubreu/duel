@@ -8,6 +8,7 @@
     "replace:prod": "sed \"s/FIREBASE_API_KEY/$FIREBASE_API_KEY/g\" src/environments/environment.prod.template.ts > src/environments/environment.prod.ts",
     "start": "npm run replace && ng serve",
     "build": "npm run replace && ng build",
+    "bundle-report": "npm run replace && ng build --prod --stats-json && webpack-bundle-analyzer dist/duel/stats.json",
     "deploy": "npm run replace && ng deploy",
     "test": "ng test",
     "lint": "ng lint",
@@ -58,6 +59,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.1.2"
+    "typescript": "~4.1.2",
+    "webpack-bundle-analyzer": "^4.4.0"
   }
 }
