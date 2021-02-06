@@ -19,12 +19,28 @@ export class ScoreComponent {
   };
   @Output() edit = new EventEmitter<Score>();
 
-  subTitle(): string {
-    return " / " + this.score.targetValue
+  formatTitle = (percent: number): string => {
+    if (percent >= 100) {
+      return "Yeah!"
+    } else {
+      return this.score.currentValue.toString()
+    }
+  }
+
+  formatSubtitle = (percent: number): string => {
+    if (percent >= 100) {
+      return ""
+    } else {
+      return "/ " + this.score.targetValue
+    }
+  }
+
+  percentage(): number {
+    return (this.score.currentValue / this.score.targetValue) * 100
   }
 
   updateScore(delta: number): void {
-    this.score.currentValue += delta;
-    this.store.collection('scores').doc(this.score.id).update(this.score);
+    this.score.currentValue += delta
+    this.store.collection('scores').doc(this.score.id).update(this.score)
   }
 }
