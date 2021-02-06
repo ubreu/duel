@@ -16,5 +16,5 @@ export class OverviewComponent {
   constructor(private store: AngularFirestore, public auth: AuthProcessService) { }
 
   // @ts-ignore
-  scores: Observable<Score[]> = this.store.collection('scores').valueChanges({ idField: 'id' });
+  scores: Observable<Score[]> = this.store.collection('duels').doc(this.auth.user.uid).collection('scores').valueChanges({ idField: 'id' });
 }

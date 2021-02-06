@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthProcessService } from 'ngx-auth-firebaseui';
 
 import { Score } from './score';
 
@@ -10,7 +11,7 @@ import { Score } from './score';
 })
 export class ScoreComponent {
 
-  constructor(private store: AngularFirestore) { }
+  constructor(private store: AngularFirestore, private auth: AuthProcessService) { }
 
   @Input() score: Score = {
     title: '',
@@ -41,6 +42,6 @@ export class ScoreComponent {
 
   updateScore(delta: number): void {
     this.score.currentValue += delta
-    this.store.collection('scores').doc(this.score.id).update(this.score)
+    this.store.collection('duels').doc(this.auth.user.uid).collection('scores').doc(this.score.id).update(this.score)
   }
 }
