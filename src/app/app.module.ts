@@ -18,12 +18,15 @@ import { environment } from 'src/environments/environment';
 import { ScoreComponent } from './score/score.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ScoreComponent,
-    OverviewComponent
+    OverviewComponent,
+    LoginComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -37,6 +40,11 @@ import { AppRoutingModule } from './app-routing.module';
     MatDividerModule,
     MatIconModule,
     MatToolbarModule,
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase, undefined, {
+      enableFirestoreSync: true,
+      authGuardFallbackURL: 'login',
+      authGuardLoggedInURL: 'overview'
+    }),
     NgCircleProgressModule.forRoot()
   ],
   providers: [],

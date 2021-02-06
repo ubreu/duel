@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">
+    <mat-icon>local_fire_department</mat-icon>
+    <span>Duel</span>
+</mat-toolbar>
+<ngx-auth-firebaseui-login [providers]="[providers.Google]" [registrationEnabled]="false" [resetPasswordEnabled]="false"
+    (onSuccess)="onSuccess()">
+</ngx-auth-firebaseui-login>
