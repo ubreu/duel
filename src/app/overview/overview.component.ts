@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthProcessService } from 'ngx-auth-firebaseui';
+
 import { Observable } from 'rxjs';
 
-import { Score } from '../score/score';
+import { Score } from '../models/score';
+import { DuelService } from '../services/duel.service';
 
 @Component({
   selector: 'app-overview',
@@ -13,8 +14,7 @@ import { Score } from '../score/score';
 })
 export class OverviewComponent {
 
-  constructor(private store: AngularFirestore, public auth: AuthProcessService) { }
+  constructor(private duelService: DuelService, public auth: AuthProcessService) { }
 
-  // @ts-ignore
-  scores: Observable<Score[]> = this.store.collection('duels').doc(this.auth.user.uid).collection('scores').valueChanges({ idField: 'id' });
+  scores: Observable<Score[]> = this.duelService.getScores()
 }
